@@ -12,6 +12,7 @@ def main():
   dt = 0
   display = pygame.display
   screen = display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+  player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
   # describe game loop
   while True:
@@ -19,6 +20,7 @@ def main():
       if event.type == pygame.QUIT:
         return
     screen.fill("black")
+    player.draw(screen)
     display.flip()
 
     # limit loop to 60 fps
