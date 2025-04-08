@@ -1,22 +1,36 @@
 import pygame
 from constants import *
-from player import Player
+from player import (
+  Player
+)
+from asteroid import (
+  Asteroid
+)
+from asteroidfield import (
+  AsteroidField
+)
 
 def main():
   print("Starting Asteroids!")
   print(f"Screen width: {SCREEN_WIDTH}")
   print(f"Screen height: {SCREEN_HEIGHT}")
 
+  # init game and display
   pygame.init()
   clock = pygame.time.Clock()
   dt = 0
   display = pygame.display
   screen = display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+  # define entities and groups
   updateable = pygame.sprite.Group()
   drawable = pygame.sprite.Group()
+  asteroids = pygame.sprite.Group()
   Player.containers = (updateable, drawable)
-  player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+  Asteroid.containers = (asteroids, updateable, drawable)
+  AsteroidField.containers = (updateable)
+  Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+  AsteroidField()
 
   # describe game loop
   while True:
