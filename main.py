@@ -49,7 +49,7 @@ def main():
         return
       for shot in shots:
         if asteroid.overlaps(shot):
-          asteroid.kill()
+          asteroid.split()
           shot.kill()
     screen.fill("black")
     for item in drawable:
