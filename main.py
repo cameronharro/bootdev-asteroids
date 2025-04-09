@@ -47,6 +47,10 @@ def main():
       if asteroid.overlaps(player):
         print("Game over!")
         return
+      for shot in shots:
+        if asteroid.overlaps(shot):
+          asteroid.kill()
+          shot.kill()
     screen.fill("black")
     for item in drawable:
       item.draw(screen)
